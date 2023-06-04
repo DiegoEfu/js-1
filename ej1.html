@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 1 - Diego Faria</title>
+
+    <script>
+        // Ejercicio #1 - Pesos Estudiantes
+        // Diego Andrés Faria Brito (V29.714.067)
+        // Sección N1113P
+
+        const n_alumnos = prompt("¿Cuántos alumnos tiene el colegio?");
+        let datos = [];
+
+        for(let i = 0; i < n_alumnos; i++){
+            datos.push(Number(prompt(`¿Cuál es el peso del alumno #${i+1}?`))); 
+        }
+
+        document.write(`Alumnos de menos de 40 Kg: ${datos.reduce((acc,i) => i < 40 ? acc + 1 : acc, 0)}<br>`);
+        document.write(`Alumnos de entre 40 y 50 Kg: ${datos.reduce((acc,i) => i >= 40 && i <= 50 ? acc + 1 : acc, 0)}<br>`);
+        document.write(`Alumnos de más de 50 y menos de 60 Kg: ${datos.reduce((acc,i) => i > 50 && i < 60 ? acc + 1 : acc, 0)}<br>`);
+        document.write(`Alumnos de menos de 40Kg: ${datos.reduce((acc,i) =>i >= 60 ? acc + 1 : acc, 0)}<br>`);
+    </script>
+</head>
+<body>
+</body>
+</html>

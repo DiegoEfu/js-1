@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 2 - Diego Faria</title>
+
+    <script>
+        // Ejercicio #2 - Cuenta Bancaria
+        // Diego Andrés Faria Brito (V29.714.067)
+        // Sección N1113P
+
+        let saldo = Number(prompt("¿Cuál es el depósito inicial de la cuenta (Enero)?"));
+
+        for(let i = 0; i < 12; i++){
+            if(i > 0)
+                saldo += 250;
+
+            document.write(`Saldo en el mes #${i+1} (sin interés): $${saldo.toFixed(2)}<br>`);
+            document.write(`Interés (1.25%): $${(saldo*0.0125).toFixed(2)}<br>`);
+            saldo += saldo*(1.25/100);
+            document.write(`Saldo al final del mes #${i+1}: $${saldo.toFixed(2)}<br><br>`);
+        }
+
+        document.write("------------------------<br><br>")
+        document.write(`<b>Saldo a final de año: </b>$${saldo.toFixed(2)}`)
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

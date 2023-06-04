@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 3 - Diego Faria</title>
+</head>
+<body>
+    <table border="1">
+        <tbody>
+            <tr>
+                <td style="background: black; color: white;">Promedio de Matemáticas</td>
+                <td id="prom_mat"></td>
+            </tr>
+            <tr>
+                <td style="background: black; color: white;">Promedio de Física</td>
+                <td id="prom_fis"></td>
+            </tr>
+            <tr>
+                <td style="background: black; color: white;">Promedio de Programación</td>
+                <td id="prom_prg"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table border="1">
+        <tbody>
+            <tr>
+                <td style="background: black; color: white;">Alumnos que aprobaron Matemáticas</td>
+                <td id="apr_mat"></td>
+            </tr>
+            <tr>
+                <td style="background: black; color: white;">Alumnos que aprobaron Física</td>
+                <td id="apr_fis"></td>
+            </tr>
+            <tr>
+                <td style="background: black; color: white;">Alumnos que aprobaron Programación</td>
+                <td id="apr_prg"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table border="1">
+        <tbody>
+            <tr>
+                <td style="background: black; color: white;">Alumnos que reprobaron Matemáticas</td>
+                <td id="rep_mat"></td>
+            </tr>
+            <tr>
+                <td style="background: black; color: white;">Alumnos que reprobaron Física</td>
+                <td id="rep_fis"></td>
+            </tr>
+            <tr>
+                <td style="background: black; color: white;">Alumnos que reprobaron Programación</td>
+                <td id="rep_prg"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table border="1">
+        <tbody>
+            <tr>
+                <td style="background: black; color: white;">Nota máxima en Matemáticas</td>
+                <td id="max_mat"></td>
+            </tr>
+            <tr>
+                <td style="background: black; color: white;">Nota máxima en Física</td>
+                <td id="max_fis"></td>
+            </tr>
+            <tr>
+                <td style="background: black; color: white;">Nota máxima en Programación</td>
+                <td id="max_prg"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table border="1">
+        <tbody>
+            <tr>
+                <td style="background: black; color: white;">Alumnos que aprobaron todas las materias</td>
+                <td id="apr_t"></td>
+            </tr>
+            <tr>
+                <td style="background: black; color: white;">Alumnos que aprobaron una sola materia</td>
+                <td id="apr_1"></td>
+            </tr>
+            <tr>
+                <td style="background: black; color: white;">Alumnos que aprobaron dos materias</td>
+                <td id="apr_2"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        // Ejercicio #3 - Estadísticas Estudiantes
+        // Diego Andrés Faria Brito (V29.714.067)
+        // Sección N1113P
+
+        const n_alumnos = prompt("¿Cuántos alumnos se analizarán?");
+        let datos = [];
+
+        for(let i = 0; i < n_alumnos; i++){
+            let datos_individuales = {cedula: "", nombre: "", mate: 0, fisica: 0, programacion: 0};
+            datos_individuales.cedula = prompt(`Ingrese la cédula del alumno ${i+1}.`);
+            datos_individuales.nombre = prompt(`Ingrese el nombre del alumno ${i+1}.`);
+            datos_individuales.mate = Number(prompt(`Ingrese la nota de matemáticas del alumno ${i+1}.`));
+            datos_individuales.fisica = Number(prompt(`Ingrese la nota de física alumno ${i+1}.`));
+            datos_individuales.programacion = Number(prompt(`Ingrese la nota de programación del alumno ${i+1}.`));
+            datos.push(datos_individuales);
+        }
+
+        let elemento_actual = document.getElementById("prom_mat");
+        elemento_actual.innerHTML = String(datos.reduce((acc,i) => (acc + i.mate), 0)/datos.length);
+        elemento_actual = document.getElementById("prom_fis");
+        elemento_actual.innerHTML = String(datos.reduce((acc,i) => (acc + i.fisica), 0)/datos.length);
+        elemento_actual = document.getElementById("prom_prg");
+        elemento_actual.innerHTML = String(datos.reduce((acc,i) => (acc + i.programacion), 0)/datos.length);
+
+        elemento_actual =  document.getElementById("apr_mat");
+        elemento_actual.innerHTML = datos.filter((i) => i.mate >= 10).length;
+        elemento_actual =  document.getElementById("apr_fis");
+        elemento_actual.innerHTML = datos.filter((i) => i.fisica >= 10).length;
+        elemento_actual =  document.getElementById("apr_prg");
+        elemento_actual.innerHTML = datos.filter((i) => i.programacion >= 10).length;
+
+        elemento_actual =  document.getElementById("rep_mat");
+        elemento_actual.innerHTML = datos.filter((i) => i.mate < 10).length;
+        elemento_actual =  document.getElementById("rep_fis");
+        elemento_actual.innerHTML = datos.filter((i) => i.fisica < 10).length;
+        elemento_actual =  document.getElementById("rep_prg");
+        elemento_actual.innerHTML = datos.filter((i) => i.programacion < 10).length;
+
+        elemento_actual =  document.getElementById("max_mat");
+        elemento_actual.innerHTML = datos.reduce((acc, i) => acc < i.mate ? i.mate : acc, 0);
+        elemento_actual =  document.getElementById("max_fis");
+        elemento_actual.innerHTML = datos.reduce((acc, i) => acc < i.fisica ? i.fisica : acc, 0);
+        elemento_actual =  document.getElementById("max_prg");
+        elemento_actual.innerHTML = datos.reduce((acc, i) => acc < i.programacion ? i.programacion : acc, 0);
+
+        elemento_actual =  document.getElementById("apr_t");
+        elemento_actual.innerHTML = datos.filter((i) => i.mate >= 10 && i.fisica >= 10 && i.programacion >= 10).length;
+        elemento_actual =  document.getElementById("apr_1");
+        elemento_actual.innerHTML = datos.filter((i) => (i.mate >= 10 && !(i.programacion >= 10 || i.fisica >= 10) || 
+            i.fisica >= 10 && !(i.mate >= 10 || i.programacion >= 10) || i.programacion >= 10 && !(i.mate >= 10 || i.fisica >= 10))).length;
+        elemento_actual =  document.getElementById("apr_2");
+        elemento_actual.innerHTML = datos.filter((i) => (i.mate < 10 && (i.programacion >= 10 && i.fisica >= 10) || 
+            i.fisica < 10 && (i.mate >= 10 && i.programacion >= 10) || i.programacion < 10 && (i.mate >= 10 && i.fisica >= 10))).length;
+
+    </script>
+</body>
+</html>
