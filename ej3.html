@@ -97,8 +97,8 @@
         // Diego Andrés Faria Brito (V29.714.067)
         // Sección N1113P
 
-        const n_alumnos = Number(prompt("¿Cuántos alumnos se analizarán?"));
-        while(n_alumnos === NaN || n_alumnos < 0)
+        let n_alumnos = Number(prompt("¿Cuántos alumnos se analizarán?"));
+        while(isNaN(n_alumnos) || n_alumnos < 0)
                 n_alumnos = Number(prompt(`Número Inválido. Reingrese el número de alumnos.`));
 
         let datos = [];
