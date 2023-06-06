@@ -97,7 +97,10 @@
         // Diego Andrés Faria Brito (V29.714.067)
         // Sección N1113P
 
-        const n_alumnos = prompt("¿Cuántos alumnos se analizarán?");
+        const n_alumnos = Number(prompt("¿Cuántos alumnos se analizarán?"));
+        while(n_alumnos === NaN || n_alumnos < 0)
+                n_alumnos = Number(prompt(`Número Inválido. Reingrese el número de alumnos.`));
+
         let datos = [];
 
         for(let i = 0; i < n_alumnos; i++){
@@ -105,8 +108,17 @@
             datos_individuales.cedula = prompt(`Ingrese la cédula del alumno ${i+1}.`);
             datos_individuales.nombre = prompt(`Ingrese el nombre del alumno ${i+1}.`);
             datos_individuales.mate = Number(prompt(`Ingrese la nota de matemáticas del alumno ${i+1}.`));
+            while(datos_individuales.mate === NaN || datos_individuales.mate < 0 || datos_individuales.mate > 20)
+                datos_individuales.mate = Number(prompt(`Nota Inválida. Reingrese la nota de matemáticas del alumno ${i+1}.`));
+
             datos_individuales.fisica = Number(prompt(`Ingrese la nota de física alumno ${i+1}.`));
+            while(datos_individuales.fisica === NaN || datos_individuales.fisica < 0 || datos_individuales.fisica > 20)
+                datos_individuales.fisica = Number(prompt(`Nota Inválida. Reingrese la nota de física del alumno ${i+1}.`));
+            
             datos_individuales.programacion = Number(prompt(`Ingrese la nota de programación del alumno ${i+1}.`));
+            while(datos_individuales.programacion === NaN || datos_individuales.programacion < 0 || datos_individuales.programacion > 20)
+                datos_individuales.programacion = Number(prompt(`Nota Inválida. Reingrese la nota de programación del alumno ${i+1}.`));
+
             datos.push(datos_individuales);
         }
 
